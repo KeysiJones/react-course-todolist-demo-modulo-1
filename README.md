@@ -42,7 +42,6 @@ O projeto foi simplificado para manter apenas os componentes essenciais para um 
 - Vite
 - ShadCN UI (versão simplificada, apenas componentes essenciais)
 - Tailwind CSS
-- React Router
 
 ## Primeiros Passos
 
