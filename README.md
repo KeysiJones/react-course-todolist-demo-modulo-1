@@ -16,14 +16,17 @@ A branch `aula-1` contém o código desenvolvido durante a primeira aula do curs
 ```
 src/
 ├── components/
-│   ├── TodoList.tsx       # Componente implementado na Aula 1
+│   ├── TodoList.tsx       # Componente principal com lista estática
+│   ├── TodoItem.tsx       # Componente para renderizar cada tarefa
 │   └── ui/                # Componentes ShadCN UI pré-configurados
 │       ├── button.tsx     # Botões para ações (adicionar, remover)
 │       ├── card.tsx       # Container do aplicativo
 │       ├── checkbox.tsx   # Para marcar tarefas como concluídas
 │       ├── input.tsx      # Para entrada de novas tarefas
+│       ├── tabs.tsx       # Para filtrar tarefas
 │       ├── toast.tsx      # Sistema de notificações
-│       └── toaster.tsx    # Gerenciador de notificações
+│       ├── toaster.tsx    # Gerenciador de notificações
+│       └── tooltip.tsx    # Dicas para os usuários
 ├── lib/
 │   └── utils.ts           # Funções utilitárias
 ├── types/
@@ -38,8 +41,9 @@ Na Aula 1, focamos nos seguintes aspectos:
 
 1. **Estrutura Visual**: Criamos o layout básico do aplicativo usando componentes Card do ShadCN UI
 2. **Componente TodoList**: Implementamos uma versão estática com exemplos de tarefas
-3. **Estilização com Tailwind**: Utilizamos classes do Tailwind CSS para estilizar a interface
-4. **Componentes Acessíveis**: Integramos componentes acessíveis como Checkbox
+3. **Componente TodoItem**: Criamos um componente para exibir itens de tarefa de forma visual
+4. **Estilização com Tailwind**: Utilizamos classes do Tailwind CSS para estilizar a interface
+5. **Visualização estática de dados**: Apresentamos dados de exemplo usando TypeScript
 
 ## O que vem nas próximas aulas
 

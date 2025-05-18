@@ -1,11 +1,17 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
+import TodoItem from "@/components/TodoItem";
+import { Todo } from "@/types/todo";
 
 // Versão simplificada para Aula 1 - apenas estrutura
 const TodoList: React.FC = () => {
   // Na Aula 1, ainda não trabalhamos com estado
-  // Apenas apresentamos a estrutura do componente
+  // Apenas apresentamos exemplos estáticos
+  const exampleTodos: Todo[] = [
+    { id: "1", text: "Aprender React", completed: false },
+    { id: "2", text: "Criar componentes", completed: true },
+    { id: "3", text: "Estilizar com Tailwind", completed: false },
+  ];
   
   return (
     <Card className="w-full max-w-md mx-auto bg-gray-800 border-gray-700 shadow-xl">
@@ -21,19 +27,9 @@ const TodoList: React.FC = () => {
         
         {/* Exemplos estáticos de itens de tarefa */}
         <div className="space-y-3 mt-6">
-          <div className="flex items-center justify-between p-3 bg-gray-700 rounded-md">
-            <div className="flex items-center gap-3">
-              <Checkbox id="tarefa1" className="border-gray-500" />
-              <span className="text-white">Tarefa de exemplo 1</span>
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between p-3 bg-gray-700 rounded-md">
-            <div className="flex items-center gap-3">
-              <Checkbox id="tarefa2" className="border-gray-500" />
-              <span className="text-white">Tarefa de exemplo 2</span>
-            </div>
-          </div>
+          {exampleTodos.map(todo => (
+            <TodoItem key={todo.id} todo={todo} />
+          ))}
         </div>
         
         <p className="text-center text-gray-400 mt-4">

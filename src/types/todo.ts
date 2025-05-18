@@ -7,5 +7,3 @@ export interface Todo {
   text: string;
   completed: boolean;
 }
-
-export type FilterStatus = 'all' | 'active' | 'completed';
