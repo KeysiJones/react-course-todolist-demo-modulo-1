@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
-import TodoFilter from "./TodoFilter";
 import { Todo, FilterStatus } from "@/types/todo";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 
 const TodoList: React.FC = () => {
@@ -64,34 +63,21 @@ const TodoList: React.FC = () => {
     }
   };
 
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === "all") return true;
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
-    return true;
-  });
+  const activeTodos = todos.filter((todo) => !todo.completed);
+  const completedTodos = todos.filter((todo) => todo.completed);
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="text-xl text-center">Lista de Tarefas</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <Card className="w-full max-w-md mx-auto bg-gray-800 border-gray-700 shadow-xl">
+      <CardContent className="p-4">
         <TodoForm onAddTodo={addTodo} />
         
-        <TodoFilter currentFilter={filter} onFilterChange={setFilter} />
-        
-        <div className="space-y-2 mt-4">
-          {filteredTodos.length === 0 ? (
-            <p className="text-center text-muted-foreground py-4">
-              {filter === "all"
-                ? "Nenhuma tarefa adicionada ainda."
-                : filter === "active"
-                ? "Nenhuma tarefa ativa."
-                : "Nenhuma tarefa concluída."}
+        <div className="space-y-3 mt-6">
+          {activeTodos.length === 0 ? (
+            <p className="text-center text-gray-400 py-4">
+              Nenhuma tarefa ativa.
             </p>
           ) : (
-            filteredTodos.map((todo) => (
+            activeTodos.map((todo) => (
               <TodoItem 
                 key={todo.id} 
                 todo={todo} 
@@ -102,10 +88,22 @@ const TodoList: React.FC = () => {
           )}
         </div>
         
-        {todos.length > 0 && (
-          <div className="mt-4 text-sm text-muted-foreground text-center">
-            {todos.length} {todos.length === 1 ? "tarefa" : "tarefas"} total,{" "}
-            {todos.filter((t) => !t.completed).length} restantes
+        {completedTodos.length > 0 && (
+          <div className="mt-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="font-medium text-gray-300">Completadas</h2>
+              <span className="text-sm text-gray-400">{completedTodos.length}</span>
+            </div>
+            <div className="space-y-3">
+              {completedTodos.map((todo) => (
+                <TodoItem 
+                  key={todo.id} 
+                  todo={todo} 
+                  onToggle={toggleTodo} 
+                  onDelete={deleteTodo} 
+                />
+              ))}
+            </div>
           </div>
         )}
       </CardContent>
