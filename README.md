@@ -2,38 +2,49 @@
 
 Este repositório contém a estrutura básica para o desenvolvimento de um aplicativo de Lista de Tarefas (Todo App) com React, TypeScript e ShadCN UI.
 
+## Sobre esta Branch
+
+A branch `estrutura-basica` contém apenas o esqueleto mínimo necessário para iniciar o projeto. Ela foi criada para que você possa acompanhar as aulas e implementar os componentes passo a passo.
+
 ## Estrutura do Projeto
 
 ```
 src/
 ├── components/
-│   ├── TodoList.tsx   # Componente de lista de tarefas
-│   └── ui/            # Componentes ShadCN UI essenciais
+│   ├── TodoList.tsx       # Componente vazio que você implementará
+│   └── ui/                # Componentes ShadCN UI pré-configurados
 │       ├── button.tsx     # Botões para ações (adicionar, remover)
 │       ├── card.tsx       # Container do aplicativo
 │       ├── checkbox.tsx   # Para marcar tarefas como concluídas
 │       ├── input.tsx      # Para entrada de novas tarefas
-│       ├── separator.tsx  # Separação visual de elementos
 │       ├── toast.tsx      # Sistema de notificações
 │       └── toaster.tsx    # Gerenciador de notificações
 ├── lib/
-│   └── utils.ts       # Funções utilitárias
+│   └── utils.ts           # Funções utilitárias
 ├── types/
-│   └── todo.ts        # Definição de tipos para tarefas
-├── App.tsx            # Componente raiz da aplicação
-└── main.tsx           # Ponto de entrada da aplicação
+│   └── todo.ts            # Definição de tipos para tarefas
+├── App.tsx                # Componente raiz da aplicação
+└── main.tsx               # Ponto de entrada da aplicação
 ```
 
-## Componentes Mantidos
+## Componentes Disponíveis
 
-O projeto foi simplificado para manter apenas os componentes essenciais para um aplicativo básico de lista de tarefas:
+Os componentes do ShadCN UI já estão configurados e prontos para uso:
 
-1. **button.tsx** - Componente de botão para ações como adicionar ou remover tarefas
-2. **card.tsx** - Container visual para o aplicativo
-3. **checkbox.tsx** - Para marcar tarefas como concluídas
-4. **input.tsx** - Para adicionar novas tarefas
-5. **separator.tsx** - Para separação visual dos elementos
-6. **toast.tsx/toaster.tsx** - Sistema de notificações para feedback ao usuário
+- **Button**: Para ações como adicionar/remover tarefas
+- **Card**: Para o container da aplicação
+- **Checkbox**: Para marcar tarefas como concluídas
+- **Input**: Para campos de texto
+- **Toast/Toaster**: Sistema de notificações
+
+## O que você vai implementar
+
+Durante as aulas, você implementará:
+
+1. **Aula 1**: Estrutura básica do componente TodoList
+2. **Aula 2**: Adição de tarefas com formulário e estado
+3. **Aula 3**: Renderização de listas e manipulação de estado
+4. **Aula 4**: Persistência com localStorage e feedback com toast
 
 ## Tecnologias
 
@@ -72,57 +83,14 @@ npm run dev
 yarn dev
 ```
 
-## Estrutura do Curso - Módulo 1
-
-Este aplicativo será desenvolvido ao longo de 4 aulas:
-
-1. **Aula 1**: Estrutura básica e componentes
-   - Introdução ao React e TypeScript
-   - Configuração do ambiente
-   - Entendimento da estrutura do projeto
-
-2. **Aula 2**: Formulários e gerenciamento local de estado
-   - Implementação de formulário para adição de tarefas
-   - Uso de useState e props
-   - Renderização condicional
-
-3. **Aula 3**: Interatividade e eventos
-   - Marcar tarefas como concluídas
-   - Filtrar tarefas
-   - Exclusão de tarefas
-
-4. **Aula 4**: Refinamento e otimização
-   - Uso de localStorage para persistência
-   - Melhorias na interface do usuário
-   - Finalização do projeto básico
-```bash
-npm install
-# ou
-yarn
-```
-
-3. Execute o projeto em modo de desenvolvimento
-```bash
-npm run dev
-# ou
-yarn dev
-```
-
 4. Acesse o aplicativo em `http://localhost:5173`
 
-## Próximos Passos
+## Como acompanhar o curso
 
-Com esta estrutura básica, você pode começar a desenvolver os componentes da sua aplicação Todo list, como:
+Para acompanhar o curso, você pode:
 
-1. Componente TodoList para exibir a lista de tarefas
-2. Componente TodoItem para mostrar cada tarefa individual
-3. Formulário para adicionar novas tarefas
-4. Filtros para as tarefas (todas, ativas, concluídas)
+1. Começar nesta branch `estrutura-basica`
+2. Implementar o código conforme as aulas
+3. Comparar seu código com a branch `aula-1` quando finalizar a primeira aula
 
-## Sobre os Componentes do ShadCN UI
-
-Os componentes na pasta `src/components/ui` são gerados pela biblioteca ShadCN UI. Você pode utilizá-los conforme necessário ou adicionar novos componentes com o comando:
-
-```bash
-npx shadcn-ui@latest add <nome-do-componente>
-```
+Isso permitirá que você tenha a experiência completa de desenvolvimento, construindo cada componente passo a passo.
