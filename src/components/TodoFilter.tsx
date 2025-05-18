@@ -1,7 +1,7 @@
 
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { FilterStatus } from "@/types/todo";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface TodoFilterProps {
   currentFilter: FilterStatus;
@@ -10,32 +10,28 @@ interface TodoFilterProps {
 
 const TodoFilter: React.FC<TodoFilterProps> = ({ currentFilter, onFilterChange }) => {
   return (
-    <div className="flex flex-wrap gap-2 mt-4 mb-2">
-      <Button
-        variant={currentFilter === "all" ? "default" : "outline"}
-        size="sm"
-        onClick={() => onFilterChange("all")}
-        className="focus-visible:ring-2 focus-visible:ring-primary"
-      >
-        Todas
-      </Button>
-      <Button
-        variant={currentFilter === "active" ? "default" : "outline"}
-        size="sm"
-        onClick={() => onFilterChange("active")}
-        className="focus-visible:ring-2 focus-visible:ring-primary"
-      >
-        Ativas
-      </Button>
-      <Button
-        variant={currentFilter === "completed" ? "default" : "outline"}
-        size="sm"
-        onClick={() => onFilterChange("completed")}
-        className="focus-visible:ring-2 focus-visible:ring-primary"
-      >
-        Concluídas
-      </Button>
-    </div>
+    <Tabs value={currentFilter} onValueChange={(value) => onFilterChange(value as FilterStatus)} className="w-full">
+      <TabsList className="grid grid-cols-3 w-full bg-gray-700 rounded-md">
+        <TabsTrigger 
+          value="all" 
+          className="data-[state=active]:bg-violet-600 data-[state=active]:text-white"
+        >
+          Todas
+        </TabsTrigger>
+        <TabsTrigger 
+          value="active" 
+          className="data-[state=active]:bg-violet-600 data-[state=active]:text-white"
+        >
+          Ativas
+        </TabsTrigger>
+        <TabsTrigger 
+          value="completed" 
+          className="data-[state=active]:bg-violet-600 data-[state=active]:text-white"
+        >
+          Concluídas
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
   );
 };
 

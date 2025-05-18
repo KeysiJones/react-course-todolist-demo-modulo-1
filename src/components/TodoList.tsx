@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
@@ -81,45 +80,47 @@ const TodoList: React.FC = () => {
   return (
     <Card className="w-full max-w-md mx-auto bg-gray-800 border-gray-700 shadow-xl">
       <CardContent className="p-4">
-        <TodoForm onAddTodo={addTodo} />
-        
         <TodoFilter currentFilter={filter} onFilterChange={handleFilterChange} />
         
-        <div className="space-y-3 mt-6">
-          {activeTodos.length === 0 ? (
-            <p className="text-center text-gray-400 py-4">
-              Nenhuma tarefa ativa.
-            </p>
-          ) : (
-            activeTodos.map((todo) => (
-              <TodoItem 
-                key={todo.id} 
-                todo={todo} 
-                onToggle={toggleTodo} 
-                onDelete={deleteTodo} 
-              />
-            ))
-          )}
-        </div>
-        
-        {completedTodos.length > 0 && (
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-medium text-gray-300">Completadas</h2>
-              <span className="text-sm text-gray-400">{completedTodos.length}</span>
-            </div>
-            <div className="space-y-3">
-              {completedTodos.map((todo) => (
+        <div className="mt-6">
+          <TodoForm onAddTodo={addTodo} />
+          
+          <div className="space-y-3 mt-4">
+            {filter !== "completed" && activeTodos.length === 0 ? (
+              <p className="text-center text-gray-400 py-4">
+                Nenhuma tarefa ativa.
+              </p>
+            ) : (
+              filter !== "completed" && activeTodos.map((todo) => (
                 <TodoItem 
                   key={todo.id} 
                   todo={todo} 
                   onToggle={toggleTodo} 
                   onDelete={deleteTodo} 
                 />
-              ))}
-            </div>
+              ))
+            )}
           </div>
-        )}
+          
+          {filter !== "active" && completedTodos.length > 0 && (
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-medium text-gray-300">Completadas</h2>
+                <span className="text-sm text-gray-400">{completedTodos.length}</span>
+              </div>
+              <div className="space-y-3">
+                {completedTodos.map((todo) => (
+                  <TodoItem 
+                    key={todo.id} 
+                    todo={todo} 
+                    onToggle={toggleTodo} 
+                    onDelete={deleteTodo} 
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
