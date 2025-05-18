@@ -84,28 +84,37 @@ const TodoList: React.FC = () => {
         
         <div className="mt-6">
           <TodoForm onAddTodo={addTodo} />
-          
           <div className="space-y-3 mt-4">
             {filter !== "completed" && activeTodos.length === 0 ? (
               <p className="text-center text-gray-400 py-4">
-                Nenhuma tarefa ativa.
+                Nenhuma tarefa pendente.
               </p>
             ) : (
-              filter !== "completed" && activeTodos.map((todo) => (
-                <TodoItem 
-                  key={todo.id} 
-                  todo={todo} 
-                  onToggle={toggleTodo} 
-                  onDelete={deleteTodo} 
-                />
-              ))
+              filter !== "completed" && (
+                <div className="mt-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="font-medium text-gray-300">Pendentes</h2>
+                    <span className="text-sm text-gray-400">{activeTodos.length}</span>
+                  </div>
+                  <div className="space-y-3">
+                    {activeTodos.map((todo) => (
+                      <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggle={toggleTodo}
+                        onDelete={deleteTodo}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
             )}
           </div>
           
           {filter !== "active" && completedTodos.length > 0 && (
             <div className="mt-8">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-medium text-gray-300">Completadas</h2>
+                <h2 className="font-medium text-gray-300">Concluídas</h2>
                 <span className="text-sm text-gray-400">{completedTodos.length}</span>
               </div>
               <div className="space-y-3">

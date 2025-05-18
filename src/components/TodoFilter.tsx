@@ -22,7 +22,7 @@ const TodoFilter: React.FC<TodoFilterProps> = ({ currentFilter, onFilterChange }
           value="active" 
           className="data-[state=active]:bg-violet-600 data-[state=active]:text-white"
         >
-          Ativas
+          Pendentes
         </TabsTrigger>
         <TabsTrigger 
           value="completed" 
