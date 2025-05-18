@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
+import TodoFilter from "./TodoFilter";
 import { Todo, FilterStatus } from "@/types/todo";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
@@ -63,13 +64,26 @@ const TodoList: React.FC = () => {
     }
   };
 
-  const activeTodos = todos.filter((todo) => !todo.completed);
-  const completedTodos = todos.filter((todo) => todo.completed);
+  const handleFilterChange = (newFilter: FilterStatus) => {
+    setFilter(newFilter);
+  };
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "all") return true;
+    if (filter === "active") return !todo.completed;
+    if (filter === "completed") return todo.completed;
+    return true;
+  });
+
+  const activeTodos = filteredTodos.filter((todo) => !todo.completed);
+  const completedTodos = filteredTodos.filter((todo) => todo.completed);
 
   return (
     <Card className="w-full max-w-md mx-auto bg-gray-800 border-gray-700 shadow-xl">
       <CardContent className="p-4">
         <TodoForm onAddTodo={addTodo} />
+        
+        <TodoFilter currentFilter={filter} onFilterChange={handleFilterChange} />
         
         <div className="space-y-3 mt-6">
           {activeTodos.length === 0 ? (
