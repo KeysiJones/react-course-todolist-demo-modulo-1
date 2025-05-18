@@ -1,17 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
 import { Toaster } from "@/components/ui/toaster";
+import TodoList from "@/components/TodoList";
 
 const App = () => (
-  <Router>
-    <div className="min-h-screen bg-gray-900 text-white">
-      <Routes>
-        <Route path="/" element={<Index />} />
-      </Routes>
-      <Toaster />
+  <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white p-4">
+    <div className="w-full max-w-md">
+      <h1 className="text-3xl font-bold mb-6 text-center">Lista de Tarefas</h1>
+      <TodoList />
     </div>
-  </Router>
+    <Toaster />
+  </div>
 );
 
 export default App;
